@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
-
+###########################################
+#  Auther:FeatherMountain(http://3wa.tw)  #
+#  Version: 1.0                           #
+#  Date: 2016-08-28                       #
+#  License: LGPLv3                        #
+###########################################
 # # how to :
 # import include
 # my = include.kit()
