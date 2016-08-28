@@ -1,5 +1,5 @@
-# include.py
-php like python include.py
+# php.py
+php like python php.py
 <pre>
 License:
   LGPLv3
@@ -12,10 +12,10 @@ Requires:
 
 How to:
   Step 1:
-    rename include_v1.0.py to include.py
+    rename php_v1.0.py to php.py
   Step 2:
-    import include
-    my = include.kit()
+    import php
+    my = php.kit()
     print(my.date('Y-m-d'));
 
 </pre>
