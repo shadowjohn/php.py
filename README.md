@@ -1,18 +1,21 @@
 # php.py
-php like python php.py
+Python Implementation of PHP Functions
+
+Let PHPers coding with python seamlessly. Additional packages like re and beautifulsoup make your life easier, just like coding in PHP!
+
 <pre>
 License:
   LGPLv3
 
-Requires:
+Requirements:
   python -m pip install --upgrade pip
   require
   requests
   BeautifulSoup4
 
-How to:
+Install:
   Step 1:
-    rename php_v1.0.py to php.py
+    rename php_v*.py to php.py
   Step 2:
     import php
     my = php.kit()
@@ -20,6 +23,6 @@ How to:
 
 </pre>
 
-Changelog:
+Changes:
 * Sun Aug 28 2016 (FeatherMountain (http://3wa.tw)) - V1.0
-- First time initial
+- First release
