@@ -13,7 +13,7 @@ Requirements:
   requests
   BeautifulSoup4
 
-Install:
+Usage:
   Step 1:
     rename php_v*.py to php.py
   Step 2:
