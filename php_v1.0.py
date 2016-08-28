@@ -6,8 +6,8 @@
 #  License: LGPLv3                        #
 ###########################################
 # # how to :
-# import include
-# my = include.kit()
+# import php
+# my = php.kit()
 # import sys
 # reload(sys)
 # sys.setdefaultencoding('utf-8')
