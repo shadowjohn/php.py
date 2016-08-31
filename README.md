@@ -24,5 +24,8 @@ Usage:
 </pre>
 
 Changes:
+* Thu Sep 01 2016 (FeatherMountain (http://3wa.tw)) - V1.1
+- Fix file_get_contents_post retry times.
+
 * Sun Aug 28 2016 (FeatherMountain (http://3wa.tw)) - V1.0
 - First release
