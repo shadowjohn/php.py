@@ -436,6 +436,7 @@ class kit:
           print(_output);
         return _output;
     def filesize(self,filename):
+        import os
         return os.path.getsize(filename)
     def download_Header(self,display_filename,filesize=None):                
         _output_filename = self.basename(display_filename);
@@ -452,7 +453,20 @@ class kit:
         self.header(_H);
     def get_between(self,data,start,end):
         result = data[data.find(start)+len(start):data.rfind(end)]
+        if data[:-1] == result:
+          return "";
         return result
+    def get_between_multi(self,data,start,end):
+        #prevent search multiple data        
+        source=data;
+        start_sep=start;
+        end_sep=end;
+        result=[]
+        tmp=source.split(start_sep)
+        for par in tmp:
+          if end_sep in par:
+            result.append(par.split(end_sep)[0])        
+        return result 
     def s2b(self,my_str):
         bytes = str.encode(my_str)
         return bytes 
