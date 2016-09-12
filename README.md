@@ -4,6 +4,9 @@ Python Implementation of PHP Functions
 Let PHPers coding with python seamlessly. Additional packages like re and beautifulsoup make your life easier, just like coding in PHP!
 
 <pre>
+Newest version:
+  1.2
+  
 License:
   LGPLv3
 
@@ -24,6 +27,11 @@ Usage:
 </pre>
 
 Changes:
+* Thu Sep 12 2016 (FeatherMountain (http://3wa.tw)) - V1.2
+- Fix file_get_contents_post headers initial.
+- Add method urlencode.
+- Add method python_version.
+
 * Thu Sep 01 2016 (FeatherMountain (http://3wa.tw)) - V1.1
 - Fix file_get_contents_post retry times.
 
