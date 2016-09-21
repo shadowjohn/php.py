@@ -5,7 +5,7 @@ Let PHPers coding with python seamlessly. Additional packages like re and beauti
 
 <pre>
 Newest version:
-  1.2
+  1.3
   
 License:
   LGPLv3
@@ -27,6 +27,11 @@ Usage:
 </pre>
 
 Changes:
+* Thu Sep 21 2016 (FeatherMountain (http://3wa.tw)) - V1.3
+- Fix method urlencode.
+- Fix file_get_contents for get mode only.
+ 
+
 * Thu Sep 12 2016 (FeatherMountain (http://3wa.tw)) - V1.2
 - Fix file_get_contents_post headers initial.
 - Add method urlencode.
