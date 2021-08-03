@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 ###########################################
 #  Auther:FeatherMountain(http://3wa.tw)  #
-#  Version: 1.0                           #
-#  Date: 2016-08-28                       #
+#  Version: 1.4                           #
+#  Date: 2021-08-03
 #  License: LGPLv3                        #
 ###########################################
 # # how to :
@@ -20,8 +20,9 @@ class kit:
     def array_push(self,arr,data):
         return arr.append(data);
     def pwd(self):
-        import os;
-        return os.getcwd();
+        import os
+        import sys
+        return os.path.dirname(os.path.realpath(sys.argv[0]));
     def deltree(self,path):
         import shutil
         shutil.rmtree(path);
@@ -52,7 +53,8 @@ class kit:
     def mkdir(self,dirname):
         # Create directory
         import os
-        os.mkdir(dirname)
+        if self.is_dir(dirname)==False:
+          os.mkdir(dirname)
     def time(self):
         # Return timestamp   
         import time 
@@ -85,7 +87,9 @@ class kit:
             elif args[0] == "s":
                 return nowtime.strftime("%S")
             elif args[0] == "Y-m-d H:i":
-                return nowtime.strftime("%Y-%m-%d %H:%M") 
+                return nowtime.strftime("%Y-%m-%d %H:%M")
+            elif args[0] == "Ymd":
+                return nowtime.strftime("%Y%m%d")  
             elif args[0] == "Y/m/d H:i:s":
                 return nowtime.strftime("%Y/%m/%d %H:%M:%S")
             elif args[0] == "Y/m/d":
@@ -146,8 +150,12 @@ class kit:
     def file_get_contents(self,data_path):
         if self.strtolower(data_path).find("http:") != -1 or self.strtolower(data_path).find("ftp:") != -1:
             # From web
-            import urllib2
-            return urllib2.urlopen(data_path).read()
+            if self.python_version()==2:
+              import urllib2
+              return urllib2.urlopen(data_path).read()
+            else:
+              import urllib.request
+              return urllib.request.urlopen(data_path).read()
         else:
             return open(data_path,encoding = 'utf8').read()
     def file_put_contents(self,filename,data,IS_APPEND=False):
@@ -229,7 +237,7 @@ class kit:
         return pattern.sub(self.htmlspecialchars_decode_func, string)    
     def in_array(self, needle,arr):
         return ( needle in arr )
-    def file_get_contents_post(self, url , data = None , headers = None):
+    def file_get_contents_post(self, url , data = None , headers = None , referer = None):
         import requests
         
         _data = "";
@@ -237,11 +245,12 @@ class kit:
         _headers = { 
             'User-Agent' : _user_agent,
             'Content-type' : 'application/x-www-form-urlencoded' 
-        } 
+        }       
+        requests.adapters.DEFAULT_RETRIES = 30
         
         if headers is not None:
           for k in headers:
-            _headers.append(k)
+            _headers[k]=headers[k];
         #print(_headers);        
         if data is None or str(data)=="":
           _data = requests.get(url,headers = _headers, stream=True)         
@@ -338,7 +347,7 @@ class kit:
         return os.path.dirname(path)
     def mainname(self,path):
         import os
-        return os.path.splitext(path)[0]
+        return os.path.splitext(self.basename(path))[0]
     def basename(self,path):
         import os
         _output = "";
@@ -414,7 +423,7 @@ class kit:
         cgitb.enable()
     def strip_tags(self,html_data):
         from bs4 import BeautifulSoup
-        bs_html = BeautifulSoup(html_data)
+        bs_html = BeautifulSoup(html_data,'html.parser');
         return bs_html.text
     def myprint(self,data):
         import pprint
@@ -432,6 +441,7 @@ class kit:
           print(_output);
         return _output;
     def filesize(self,filename):
+        import os
         return os.path.getsize(filename)
     def download_Header(self,display_filename,filesize=None):                
         _output_filename = self.basename(display_filename);
@@ -448,7 +458,20 @@ class kit:
         self.header(_H);
     def get_between(self,data,start,end):
         result = data[data.find(start)+len(start):data.rfind(end)]
+        if data[:-1] == result:
+          return "";
         return result
+    def get_between_multi(self,data,start,end):
+        #prevent search multiple data        
+        source=data;
+        start_sep=start;
+        end_sep=end;
+        result=[]
+        tmp=source.split(start_sep)
+        for par in tmp:
+          if end_sep in par:
+            result.append(par.split(end_sep)[0])        
+        return result 
     def s2b(self,my_str):
         bytes = str.encode(my_str)
         return bytes 
@@ -462,3 +485,16 @@ class kit:
         return math.ceil(data);
     def is_numeric(self,data):
         return data.isnumeric();
+    def python_version(self):
+        import sys
+        if sys.version_info[0] > 2:
+          return 3;
+        else:
+          return 2;        
+    def urlencode(self,data):
+        if self.python_version() == 3:
+          import urllib.parse
+          return urllib.parse.quote(data);
+        else:
+          import urllib
+          return urllib.quote(data);

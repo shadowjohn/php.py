@@ -5,7 +5,7 @@ Let PHPers coding with python seamlessly. Additional packages like re and beauti
 
 <pre>
 Newest version:
-  1.3
+  1.4
   
 License:
   LGPLv3
@@ -18,15 +18,30 @@ Requirements:
 
 Usage:
   Step 1:
-    rename php_v*.py to php.py
+    copy php.py to your project
   Step 2:
     import php
     my = php.kit()
     print(my.date('Y-m-d'));
-
+    
+    or
+    
+    import imp
+    import os
+    import sys
+    PWD = os.path.dirname(os.path.abspath(__file__));   
+    php = imp.load_source('module', PWD+"\\lib\\php.py")
+    my = php.kit() 
+    print(my.date('Y-m-d'));
+    
 </pre>
 
 Changes:
+* Tus Aug 03 2021 (FeatherMountain (https://3wa.tw)) - V1.4
+- Fix mainname()
+- Fix pwd()
+- Remove old version
+
 * Thu Sep 21 2016 (FeatherMountain (http://3wa.tw)) - V1.3
 - Fix method urlencode.
 - Fix file_get_contents for get mode only.
