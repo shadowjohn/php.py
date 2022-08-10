@@ -41,7 +41,7 @@ Usage:
     import os
     import sys
     PWD = os.path.dirname(os.path.abspath(__file__));   
-    php = importlib.machinery.SourceFileLoader('module', PWD+"/inc/php.py").load_module()
+    php = importlib.machinery.SourceFileLoader('module', PWD+"/lib/php.py").load_module()
     my = php.kit() 
     print(my.date('Y-m-d H:i:s'));
     
