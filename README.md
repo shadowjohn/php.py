@@ -34,7 +34,7 @@ Usage:
     my = php.kit() 
     print(my.date('Y-m-d'));
     
-    or (Python3)
+    or (Linux Python3)
     
     #!/bin/python3
     import importlib
