@@ -24,7 +24,7 @@ Usage:
     my = php.kit()
     print(my.date('Y-m-d'));
     
-    or
+    or (Python2)
     
     import imp
     import os
@@ -33,6 +33,17 @@ Usage:
     php = imp.load_source('module', PWD+"\\lib\\php.py")
     my = php.kit() 
     print(my.date('Y-m-d'));
+    
+    or (Python3)
+    
+    #!/bin/python3
+    import importlib
+    import os
+    import sys
+    PWD = os.path.dirname(os.path.abspath(__file__));   
+    php = importlib.machinery.SourceFileLoader('module', PWD+"/inc/php.py").load_module()
+    my = php.kit() 
+    print(my.date('Y-m-d H:i:s'));
     
 </pre>
 
